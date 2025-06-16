@@ -29,7 +29,7 @@ A modern web application for creating and viewing recipes with a clean, user-fri
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+4. Open your development server http://localhost:xxxx in your browser
 
 ## Available Scripts
 
