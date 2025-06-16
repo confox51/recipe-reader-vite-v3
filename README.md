@@ -1,12 +1,51 @@
-# React + Vite
+# Recipe Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application for creating and viewing recipes with a clean, user-friendly interface. Built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Create and edit recipes with title, description, ingredients, and step-by-step instructions
+- Clean and intuitive user interface with responsive design
+- Example recipe loading functionality
+- Form validation to ensure all required fields are filled
+- Beautiful recipe display with organized ingredients and instructions
+- Built with modern web technologies
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React 19
+- Vite 6
+- TailwindCSS 4
+- ESLint for code quality
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Project Structure
+
+- `src/components/` - React components
+  - `RecipeInput.jsx` - Form for creating/editing recipes
+  - `RecipeDisplay.jsx` - Display component for viewing recipes
+- `src/App.jsx` - Main application component
+- `src/main.jsx` - Application entry point
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
