@@ -2,6 +2,8 @@
 import React from 'react';
 import RecipeInput from './components/RecipeInput.jsx';
 import RecipeDisplay from './components/RecipeDisplay.jsx';
+import Modal from './components/Modal.jsx';
+import { testFunction } from './utils/test.js';
 
 // Dummy data for the example recipe
 const exampleRecipe = {
@@ -33,6 +35,7 @@ const exampleRecipe = {
 export default function App() {
     const [view, setView] = React.useState('input'); // 'input' or 'display'
     const [recipe, setRecipe] = React.useState(null);
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
 
     // State for individual form fields
     const [title, setTitle] = React.useState('');
@@ -82,22 +85,50 @@ export default function App() {
         setView('input');
     };
 
+    // Function to handle test button click
+    const handleTestClick = () => {
+        testFunction(ingredients);
+    };
+
+    // Function to handle suggest pairings modal
+    const handleSuggestPairings = () => {
+        setIsModalOpen(true);
+    };
+
+    // Function to handle suggest variations modal  
+    const handleSuggestVariations = () => {
+        setIsModalOpen(true);
+    };
+
     return (
-        <div className="bg-gray-50 min-h-screen font-sans">
-            {view === 'input' ? (
-                <RecipeInput
-                    onShowRecipe={handleShowRecipe}
-                    onLoadExample={handleLoadExample}
-                    title={title} setTitle={setTitle}
-                    description={description} setDescription={setDescription}
-                    ingredients={ingredients} setIngredients={setIngredients}
-                    instructions={instructions} setInstructions={setInstructions}
-                    error={error}
-                    onClear={handleClear}
-                />
-            ) : (
-                <RecipeDisplay recipe={recipe} onBack={handleBack} />
-            )}
-        </div>
+        <>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Test Modal" isLoading={false}>
+                <p>This is a test modal</p>
+            </Modal>
+            <div className="bg-gray-50 min-h-screen font-sans">
+                {view === 'input' ? (
+                    <RecipeInput
+                        onShowRecipe={handleShowRecipe}
+                        onLoadExample={handleLoadExample}
+                        title={title} setTitle={setTitle}
+                        description={description} setDescription={setDescription}
+                        ingredients={ingredients} setIngredients={setIngredients}
+                        instructions={instructions} setInstructions={setInstructions}
+                        error={error}
+                        onClear={handleClear}
+                    />
+                ) : (
+                    <RecipeDisplay 
+                        recipe={recipe} 
+                        onBack={handleBack} 
+                        onTest={handleTestClick}
+                        onSuggestPairings={handleSuggestPairings}
+                        onSuggestVariations={handleSuggestVariations} />
+                )}
+            </div>
+            <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
+                <button onClick={() => setIsModalOpen(true)} className="bg-blue-500 text-white px-4 py-2 rounded-lg">Test Modal</button>
+            </div>
+        </>
     );
 }

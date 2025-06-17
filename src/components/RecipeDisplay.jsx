@@ -1,7 +1,7 @@
 // src/components/RecipeDisplay.jsx
 import React from 'react';
 
-export default function RecipeDisplay({ recipe, onBack }) {
+export default function RecipeDisplay({ recipe, onBack, onTest, onSuggestPairings, onSuggestVariations }) {
     if (!recipe) {
         return (
             <div className="max-w-4xl mx-auto p-8 text-center">
@@ -25,26 +25,39 @@ export default function RecipeDisplay({ recipe, onBack }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
                         {/* Ingredients Section */}
-                        <div className="md:col-span-1 bg-blue-50 p-6 rounded-xl">
-                            <h2 className="text-2xl font-semibold text-blue-800 mb-4">Ingredients</h2>
-                            <ul className="space-y-3">
-                                {recipe.ingredients.map((item, i) => (
-                                    <li key={i} className="flex items-start">
-                                        <span className="text-blue-500 font-bold mr-3">&#8226;</span>
-                                        <span className="text-gray-700">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                        <div className="md:col-span-1">
+                            <button 
+                                onClick={onSuggestPairings}
+                                className="mb-4 bg-purple-100 text-purple-700 font-semibold py-2 px-4 rounded-full hover:bg-purple-200 transition-colors flex items-center gap-2"
+                            >
+                                <span>✨</span>
+                                Suggest Pairings
+                            </button>
+                            <div className="bg-blue-50 p-6 rounded-xl">
+                                <h2 className="text-2xl font-semibold text-blue-800 mb-4">Ingredients</h2>
+                                <ul className="space-y-3">
+                                    {recipe.ingredients.map((item, i) => (
+                                        <li key={i} className="flex items-start">
+                                            <span className="text-blue-500 font-bold mr-3">&#8226;</span>
+                                            <span className="text-gray-700">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Instructions Section */}
                         <div className="md:col-span-2">
+                            <button 
+                                onClick={onSuggestVariations}
+                                className="mb-4 bg-teal-100 text-teal-700 font-semibold py-2 px-4 rounded-full hover:bg-teal-200 transition-colors flex items-center gap-2"
+                            >
+                                <span>✨</span>
+                                Suggest Variations
+                            </button>
                             <div className="flex items-center justify-between mb-4">
                                 <h2 className="text-2xl font-semibold text-gray-800">Instructions</h2>
-                                {/* The "Read Aloud" button from the reference is disabled for simplicity. */}
-                                <button className="bg-blue-100 text-blue-800 font-semibold py-2 px-4 rounded-full flex items-center gap-2 cursor-not-allowed opacity-50" disabled>
-                                    Read Aloud
-                                </button>
+
                             </div>
                             <ol className="space-y-4">
                                 {recipe.instructions.map((step, i) => (
@@ -54,6 +67,19 @@ export default function RecipeDisplay({ recipe, onBack }) {
                                     </li>
                                 ))}
                             </ol>
+                            <div className="flex items-center gap-3">
+                                    {/* Audio Player */}
+                                    <div className="bg-green-100 p-2 rounded-lg">
+                                        <audio controls className="h-8">
+                                            <source src="/recipe_ingredients_0.wav" type="audio/wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                    {/* The "Read Aloud" button from the reference is disabled for simplicity. */}
+                                    <button onClick={onTest} className="bg-blue-100 text-blue-800 font-semibold py-2 px-4 rounded-full flex items-center gap-2 cursor-pointer" >
+                                        Read Aloud
+                                    </button>
+                                </div>
                         </div>
                     </div>
                 </div>
