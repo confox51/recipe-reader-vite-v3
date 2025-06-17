@@ -126,9 +126,6 @@ export default function App() {
                         onSuggestVariations={handleSuggestVariations} />
                 )}
             </div>
-            <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
-                <button onClick={() => setIsModalOpen(true)} className="bg-blue-500 text-white px-4 py-2 rounded-lg">Test Modal</button>
-            </div>
         </>
     );
 }
