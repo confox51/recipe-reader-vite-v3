@@ -93,6 +93,9 @@ export default function App() {
     // Function to handle suggest pairings modal
     const handleSuggestPairings = () => {
         setIsModalOpen(true);
+        setModalTitle('Drink Pairings');
+        const prompt = `Based on the recipe for "${recipe.title}", which is described as "${recipe.description}", suggest three drink pairings. Include one alcoholic (wine, beer, or cocktail) and one non-alcoholic option. For each, provide a brief explanation of why it pairs well. Format the response cleanly.`;
+        callGeminiAPI(prompt);
     };
 
     // Function to handle suggest variations modal  
