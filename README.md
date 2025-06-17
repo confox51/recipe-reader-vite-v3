@@ -22,13 +22,17 @@ A modern web application for creating and viewing recipes with a clean, user-fri
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    npm install
    ```
+
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
+
 4. Open your development server http://localhost:xxxx in your browser
 
 ## Available Scripts
