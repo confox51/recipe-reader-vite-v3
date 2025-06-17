@@ -3,7 +3,8 @@ import React from 'react';
 import RecipeInput from './components/RecipeInput.jsx';
 import RecipeDisplay from './components/RecipeDisplay.jsx';
 import Modal from './components/Modal.jsx';
-import { testFunction } from './utils/test.js';
+// import { testFunction } from './utils/deleteMe_test.js';
+import { callGeminiAPI } from './utils/geminiTts.js';
 
 // Dummy data for the example recipe
 const exampleRecipe = {
@@ -36,6 +37,7 @@ export default function App() {
     const [view, setView] = React.useState('input'); // 'input' or 'display'
     const [recipe, setRecipe] = React.useState(null);
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [modalTitle, setModalTitle] = React.useState('');
 
     // State for individual form fields
     const [title, setTitle] = React.useState('');
@@ -87,7 +89,8 @@ export default function App() {
 
     // Function to handle test button click
     const handleTestClick = () => {
-        testFunction(ingredients);
+        // testFunction(ingredients);
+        console.log('Clicked')
     };
 
     // Function to handle suggest pairings modal
@@ -105,7 +108,7 @@ export default function App() {
 
     return (
         <>
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Test Modal" isLoading={false}>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={modalTitle} isLoading={false}>
                 <p>This is a test modal</p>
             </Modal>
             <div className="bg-gray-50 min-h-screen font-sans">

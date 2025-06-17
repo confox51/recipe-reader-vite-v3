@@ -2,7 +2,7 @@ import { GoogleGenAI } from '@google/genai';
   
 export const callGeminiAPI = async (prompt) => {
     const ai = new GoogleGenAI({
-      apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+      apiKey: import.meta.env.VITE_TEST_KEY,
     });
     const config = {
       responseMimeType: 'text/plain',
@@ -19,13 +19,10 @@ export const callGeminiAPI = async (prompt) => {
       },
     ];
   
-    const response = await ai.models.generateContentStream({
+    const response = await ai.models.generateContent({
       model,
       config,
       contents,
     });
-    let fileIndex = 0;
-    for await (const chunk of response) {
-      console.log(chunk.text);
-    }
+    return response.text;
 };
